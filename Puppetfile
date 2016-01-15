@@ -1,9 +1,13 @@
-forge 'forge.puppetlabs.com'
+forge 'https://forge.puppetlabs.com'
 
-# Forge Modules
+# supported forge modules
+mod 'puppetlabs/stdlib', '4.11.0'
 mod 'puppetlabs/ntp', '4.1.0'
 mod 'puppetlabs/motd', '1.3.0'
-mod 'puppetlabs/stdlib'
+
+# approved forge modules
+mod 'zack/r10k', '3.2.0'
 
 # unsupported forge modules
 mod 'hunner/hiera', '1.4.1'
+mod 'puppetlabs/git', '0.4.0'
