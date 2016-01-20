@@ -4,33 +4,13 @@ class profiles::puppetmaster {
     content => "Vagrant Puppet Master\n",
   }
 
-  package { 'puppetserver':
-    ensure => latest,
-  }
-
-  augeas { 'puppetserver::jvm':
-    lens    => 'Shellvars.lns',
-    incl    => '/etc/sysconfig/puppetserver',
-    changes => [
-      "set JAVA_ARGS '\"-Xms512m -Xmx512m -XX:MaxPermSize=256m\"'",
-    ],
-    require => Package['puppetserver'],
-    notify  => Service['puppetserver'],
-  }
-
-  file { '/etc/puppetlabs/puppet/puppet.conf':
-    ensure  => file,
-    source  => 'puppet:///modules/profiles/puppetmaster/puppet.conf',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => Package['puppetserver'],
-    notify  => Service['puppetserver'],
-  }
-
-  service { 'puppetserver':
-    ensure => running,
-    enable => true,
+  class { 'puppet::server':
+    java_Xms       => '512m',
+    java_Xmx       => '512m',
+    ca             => true,
+    autosign       => true,
+    node_terminus  => 'exec',
+    external_nodes => '/opt/enc/enc.rb',
   }
 
   file { ['/opt', '/opt/enc']:
