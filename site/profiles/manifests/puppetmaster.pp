@@ -5,12 +5,13 @@ class profiles::puppetmaster {
   }
 
   class { 'puppet::server':
-    java_Xms       => '512m',
-    java_Xmx       => '512m',
-    ca             => true,
-    autosign       => true,
-    node_terminus  => 'exec',
-    external_nodes => '/opt/enc/enc.rb',
+    java_Xms              => '512m',
+    java_Xmx              => '512m',
+    ca                    => true,
+    autosign              => true,
+    node_terminus         => 'exec',
+    external_nodes        => '/opt/enc/enc.rb',
+    allow_duplicate_certs => true,
   }
 
   file { ['/opt', '/opt/enc']:
