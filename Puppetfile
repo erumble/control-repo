@@ -12,6 +12,7 @@ mod 'zack/r10k', '3.2.0'
 # unsupported forge modules
 mod 'hunner/hiera', '1.4.1'
 mod 'puppetlabs/git', '0.4.0'
+mod 'jdowning/rbenv', '2.1.0'
 
 # non-forge modules
 mod 'erumble/puppet',
