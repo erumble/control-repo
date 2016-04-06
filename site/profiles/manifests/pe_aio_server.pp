@@ -22,9 +22,4 @@ class profiles::pe_aio_server {
     master_service => 'puppetserver',
   }
 
-  class { 'r10k':
-    remote   => 'https://github.com/erumble/control-repo.git',
-    cachedir => '/opt/puppetlabs/puppet/cache/r10k',
-  }
-
 }
