@@ -5,6 +5,7 @@ class profiles::pe_aio_server {
     java_Xmx        => '512m',
     ca              => true,
     autosign        => true,
+    service_name    => 'pe-puppetserver',
     manage_packages => false,
   }
 
