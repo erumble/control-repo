@@ -1,5 +1,13 @@
 class profiles::pe_aio_server {
 
+  class { 'puppet::server':
+    java_Xms        => '512m',
+    java_Xmx        => '512m',
+    ca              => true,
+    autosign        => true,
+    manage_packages => false,
+  }
+
   class { 'hiera':
     hierarchy => [
       "nodes/%{::trusted.certname}",
